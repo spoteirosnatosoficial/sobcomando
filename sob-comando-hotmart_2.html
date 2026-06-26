@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método SOB COMANDO — Conquiste o respeito que sua competência merece</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --preto: #0a0a0a;
+    --dourado: #B8860B;
+    --dourado-claro: #D4A017;
+    --dourado-suave: #F5E6C0;
+    --cinza-escuro: #1a1a1a;
+    --cinza-medio: #2a2a2a;
+    --cinza-texto: #888;
+    --branco: #ffffff;
+    --branco-suave: #f9f9f9;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--preto);
+    color: var(--branco);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1f1f1f;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--dourado);
+    text-transform: uppercase;
+  }
+  .nav-cta {
+    background: var(--dourado);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--dourado-claro); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    background: radial-gradient(ellipse at top, #1a1500 0%, #0a0a0a 60%);
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--dourado);
+    color: var(--dourado);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 800px;
+    margin-bottom: 1.5rem;
+    color: var(--branco);
+  }
+  .hero h1 span { color: var(--dourado); }
+  .hero p {
+    font-size: 1.1rem;
+    color: #bbb;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  /* VIDEO PLACEHOLDER */
+  .video-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    aspect-ratio: 16/9;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .video-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(184,134,11,0.08) 0%, transparent 70%);
+  }
+  .play-btn {
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--dourado);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+  .play-btn::after {
+    content: '';
+    border-left: 26px solid var(--dourado);
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    margin-left: 6px;
+  }
+  .play-btn:hover { background: rgba(184,134,11,0.15); }
+  .video-label {
+    font-size: 0.85rem;
+    color: var(--cinza-texto);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* CTAs */
+  .btn-primary {
+    display: inline-block;
+    background: var(--dourado);
+    color: #000;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.1s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { background: var(--dourado-claro); transform: translateY(-1px); }
+
+  .hero-bullets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+  .hero-bullet {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .hero-bullet::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--dourado);
+    display: block;
+  }
+
+  /* SEÇÕES */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  /* DOR */
+  .dor-section { background: #0d0d0d; }
+  .dor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    margin-top: 3rem;
+  }
+  .dor-item {
+    background: #0d0d0d;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .dor-x {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .dor-text { font-size: 0.95rem; color: #bbb; }
+  .dor-highlight {
+    margin-top: 3rem;
+    border-left: 3px solid var(--dourado);
+    padding-left: 1.5rem;
+  }
+  .dor-highlight p {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.7;
+  }
+  .dor-highlight strong { color: var(--branco); }
+
+  /* MÉTODO */
+  .metodo-section { background: var(--preto); }
+  .metodo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: #1a1a1a;
+    margin-top: 3rem;
+  }
+  .metodo-card {
+    background: var(--preto);
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+  .metodo-letra {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--dourado);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+  }
+  .metodo-titulo { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .metodo-desc { font-size: 0.85rem; color: #888; line-height: 1.5; }
+
+  /* TRANSFORMAÇÃO */
+  .transform-section { background: #0d0d0d; }
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #1a1a1a;
+    margin-top: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .transform-col {
+    background: #0d0d0d;
+    padding: 2rem;
+  }
+  .transform-col-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .transform-col.antes .transform-col-title { color: #555; }
+  .transform-col.depois .transform-col-title { color: var(--dourado); }
+  .transform-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #161616;
+  }
+  .transform-item:last-child { border-bottom: none; }
+  .transform-col.antes .transform-item { color: #555; }
+  .transform-col.depois .transform-item { color: #ddd; }
+  .dot-antes { width: 8px; height: 8px; min-width: 8px; background: #333; }
+  .dot-depois { width: 8px; height: 8px; min-width: 8px; background: var(--dourado); }
+
+  /* PARA QUEM */
+  .paraquem-section { background: var(--preto); }
+  .paraquem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .paraquem-item {
+    border: 1px solid #1f1f1f;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #ccc;
+    transition: border-color 0.2s;
+  }
+  .paraquem-item:hover { border-color: var(--dourado); color: var(--branco); }
+  .check {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    background: var(--dourado);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: #000;
+  }
+
+  /* O QUE VOCÊ RECEBE */
+  .incluso-section { background: #0d0d0d; }
+  .incluso-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: #1a1a1a;
+    margin-top: 3rem;
+  }
+  .incluso-card {
+    background: #0d0d0d;
+    padding: 2rem;
+  }
+  .incluso-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--dourado);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .incluso-titulo { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .incluso-desc { font-size: 0.85rem; color: #777; line-height: 1.5; }
+
+  /* AULAS */
+  .aulas-section { background: var(--preto); }
+  .aulas-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1px; background: #1a1a1a; }
+  .aula-item {
+    background: var(--preto);
+    padding: 1.75rem 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .aula-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--dourado);
+    min-width: 60px;
+    padding-top: 4px;
+    text-transform: uppercase;
+  }
+  .aula-titulo { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .aula-desc { font-size: 0.85rem; color: #777; line-height: 1.5; }
+
+  /* AUTOR */
+  .autor-section { background: #0d0d0d; }
+  .autor-inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .autor-foto {
+    width: 200px;
+    height: 200px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #444;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .autor-nome {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .autor-cargo {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .autor-bio { font-size: 0.95rem; color: #aaa; line-height: 1.75; }
+  .autor-bio strong { color: var(--branco); }
+
+  /* OBJEÇÕES */
+  .objec-section { background: var(--preto); }
+  .objec-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1px; background: #1a1a1a; }
+  .objec-item {
+    background: var(--preto);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: default;
+  }
+  .objec-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border: 1px solid var(--dourado);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--dourado);
+  }
+  .objec-text { font-size: 0.95rem; color: #bbb; }
+
+  /* GARANTIA */
+  .garantia-section { background: #0a0900; border-top: 1px solid #1a1700; border-bottom: 1px solid #1a1700; }
+  .garantia-inner {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .garantia-selo {
+    width: 120px;
+    height: 120px;
+    min-width: 120px;
+    border: 2px solid var(--dourado);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+  }
+  .garantia-dias {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--dourado);
+    line-height: 1;
+  }
+  .garantia-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #888; }
+  .garantia-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .garantia-desc { font-size: 0.9rem; color: #999; line-height: 1.7; }
+
+  /* OFERTA */
+  .oferta-section {
+    background: var(--preto);
+    text-align: center;
+  }
+  .oferta-box {
+    max-width: 560px;
+    margin: 3rem auto 0;
+    border: 1px solid #2a2200;
+    background: #0d0b00;
+    padding: 3rem 2.5rem;
+    position: relative;
+  }
+  .oferta-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--dourado);
+  }
+  .oferta-nome { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dourado); margin-bottom: 2rem; display: block; }
+  .oferta-parcel { font-size: 0.9rem; color: #888; margin-bottom: 0.25rem; }
+  .oferta-parcel span { color: #ccc; }
+  .oferta-preco {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--branco);
+    line-height: 1;
+    margin: 0.25rem 0;
+  }
+  .oferta-preco small { font-size: 1.5rem; vertical-align: super; }
+  .oferta-ou { font-size: 0.85rem; color: #555; margin: 0.5rem 0 0.25rem; }
+  .oferta-avista { font-size: 1rem; color: #888; margin-bottom: 2rem; }
+  .oferta-avista strong { color: var(--dourado); }
+  .btn-oferta {
+    display: block;
+    width: 100%;
+    background: var(--dourado);
+    color: #000;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 1.1rem 2rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-oferta:hover { background: var(--dourado-claro); }
+  .oferta-access { font-size: 0.8rem; color: #555; margin-bottom: 2rem; }
+  .oferta-itens {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-top: 1px solid #1a1700;
+    padding-top: 1.5rem;
+  }
+  .oferta-itens li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+  .oferta-check {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    background: var(--dourado);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: #000;
+  }
+
+  /* FAQ */
+  .faq-section { background: #0d0d0d; }
+  .faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1px; background: #1a1a1a; }
+  .faq-item {
+    background: #0d0d0d;
+    padding: 1.5rem 2rem;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .faq-item:hover { border-left-color: var(--dourado); }
+  .faq-q { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--branco); }
+  .faq-a { font-size: 0.85rem; color: #777; line-height: 1.6; }
+
+  /* FECHAMENTO */
+  .closing-section {
+    text-align: center;
+    background: radial-gradient(ellipse at bottom, #1a1500 0%, #0a0a0a 60%);
+    position: relative;
+    overflow: hidden;
+  }
+  .closing-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+  }
+  .closing-section .section-title { max-width: 600px; margin: 0 auto 2rem; }
+
+  /* FOOTER */
+  footer {
+    background: #000;
+    border-top: 1px solid #111;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #333;
+  }
+  footer a { color: #444; text-decoration: none; }
+  footer a:hover { color: var(--dourado); }
+  .footer-logo { font-weight: 800; letter-spacing: 0.15em; color: #333; margin-bottom: 0.75rem; font-size: 0.9rem; }
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 1rem; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .autor-inner { grid-template-columns: 1fr; }
+    .autor-foto { width: 100%; }
+    .transform-grid { grid-template-columns: 1fr; }
+    .garantia-inner { flex-direction: column; text-align: center; }
+    .aula-item { flex-direction: column; gap: 0.5rem; }
+    .aula-num { min-width: auto; }
+    nav { padding: 0.75rem 1rem; }
+    .nav-logo { font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">SOB COMANDO</span>
+  <a href="#oferta" class="nav-cta">Assumir o Comando</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-badge">Método SOB COMANDO</span>
+  <h1>Conquiste o respeito que a sua <span>competência merece.</span></h1>
+  <p>Se você sente que possui potencial, mas ainda não consegue transmitir confiança, autoridade e maturidade profissional, este vídeo pode mudar a forma como as pessoas enxergam você.</p>
+
+  <div class="video-wrapper">
+    <div class="play-btn"></div>
+    <span class="video-label">Assista antes de tomar qualquer decisão</span>
+  </div>
+
+  <a href="#oferta" class="btn-primary">Assumir o Comando</a>
+
+  <div class="hero-bullets">
+    <span class="hero-bullet">Seja ouvido sem levantar a voz</span>
+    <span class="hero-bullet">Desenvolva respeito e presença mesmo sendo jovem</span>
+    <span class="hero-bullet">Acelere seu crescimento profissional</span>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="dor-section">
+  <div class="container">
+    <span class="section-label">Identificação</span>
+    <h2 class="section-title">Você sente que possui potencial, mas ninguém parece perceber?</h2>
+
+    <div class="dor-grid">
+      <div class="dor-item"><div class="dor-x">✕</div><span class="dor-text">Você trava em reuniões e não consegue falar o que pensa</span></div>
+      <div class="dor-item"><div class="dor-x">✕</div><span class="dor-text">Tem boas ideias mas não sabe como apresentá-las</span></div>
+      <div class="dor-item"><div class="dor-x">✕</div><span class="dor-text">Evita conversas difíceis por medo de conflito</span></div>
+      <div class="dor-item"><div class="dor-x">✕</div><span class="dor-text">Tem medo de parecer incompetente diante dos outros</span></div>
+      <div class="dor-item"><div class="dor-x">✕</div><span class="dor-text">Não consegue se impor mesmo quando está certo</span></div>
+      <div class="dor-item"><div class="dor-x">✕</div><span class="dor-text">Pessoas menos preparadas crescem mais rápido que você</span></div>
+    </div>
+
+    <div class="dor-highlight" style="margin-top: 3rem;">
+      <p>O problema não é falta de capacidade. <strong>É falta de posicionamento.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="metodo-section">
+  <div class="container">
+    <span class="section-label">A Metodologia</span>
+    <h2 class="section-title">O Método COMANDO</h2>
+    <p style="color: #777; margin-top: 0.5rem;">Uma metodologia criada para desenvolver liderança, comunicação e presença profissional.</p>
+
+    <div class="metodo-grid">
+      <div class="metodo-card">
+        <div class="metodo-letra">C</div>
+        <div class="metodo-titulo">Clareza</div>
+        <div class="metodo-desc">Aprenda a comunicar suas ideias com segurança e objetividade.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-letra">O</div>
+        <div class="metodo-titulo">Observação</div>
+        <div class="metodo-desc">Desenvolva inteligência social e percepção dos ambientes.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-letra">M</div>
+        <div class="metodo-titulo">Maturidade</div>
+        <div class="metodo-desc">Construa postura profissional reconhecida por todos.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-letra">A</div>
+        <div class="metodo-titulo">Autorresponsabilidade</div>
+        <div class="metodo-desc">Pare de terceirizar resultados e assuma o controle.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-letra">N</div>
+        <div class="metodo-titulo">Nitidez</div>
+        <div class="metodo-desc">Tenha clareza nas decisões e nas prioridades.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-letra">D</div>
+        <div class="metodo-titulo">Direção</div>
+        <div class="metodo-desc">Lidere sua vida e carreira com intenção.</div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-letra">O</div>
+        <div class="metodo-titulo">Organização</div>
+        <div class="metodo-desc">Desenvolva disciplina e consistência no dia a dia.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMAÇÃO -->
+<section class="transform-section">
+  <div class="container">
+    <span class="section-label">Transformação</span>
+    <h2 class="section-title">O que muda quando você assume o comando?</h2>
+
+    <div class="transform-grid">
+      <div class="transform-col antes">
+        <div class="transform-col-title">Antes</div>
+        <div class="transform-item"><div class="dot-antes"></div> Timidez constante</div>
+        <div class="transform-item"><div class="dot-antes"></div> Insegurança profissional</div>
+        <div class="transform-item"><div class="dot-antes"></div> Medo de julgamento</div>
+        <div class="transform-item"><div class="dot-antes"></div> Dificuldade para liderar</div>
+        <div class="transform-item"><div class="dot-antes"></div> Falta de posicionamento</div>
+      </div>
+      <div class="transform-col depois">
+        <div class="transform-col-title">Depois</div>
+        <div class="transform-item"><div class="dot-depois"></div> Comunicação segura</div>
+        <div class="transform-item"><div class="dot-depois"></div> Presença profissional</div>
+        <div class="transform-item"><div class="dot-depois"></div> Respeito genuíno</div>
+        <div class="transform-item"><div class="dot-depois"></div> Liderança prática</div>
+        <div class="transform-item"><div class="dot-depois"></div> Confiança emocional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="paraquem-section">
+  <div class="container">
+    <span class="section-label">Para quem é</span>
+    <h2 class="section-title">Este método foi feito para você se...</h2>
+
+    <div class="paraquem-grid">
+      <div class="paraquem-item"><div class="check">✓</div> É um jovem profissional</div>
+      <div class="paraquem-item"><div class="check">✓</div> Se considera tímido</div>
+      <div class="paraquem-item"><div class="check">✓</div> Deseja liderar equipes</div>
+      <div class="paraquem-item"><div class="check">✓</div> Quer crescer na carreira</div>
+      <div class="paraquem-item"><div class="check">✓</div> Busca maturidade profissional</div>
+      <div class="paraquem-item"><div class="check">✓</div> Quer melhorar o networking</div>
+      <div class="paraquem-item"><div class="check">✓</div> Quer confiança para falar em público</div>
+      <div class="paraquem-item"><div class="check">✓</div> Quer ser respeitado por colegas e líderes</div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ RECEBE -->
+<section class="incluso-section">
+  <div class="container">
+    <span class="section-label">O que você recebe</span>
+    <h2 class="section-title">Tudo o que você precisa em um só lugar</h2>
+
+    <div class="incluso-grid">
+      <div class="incluso-card">
+        <span class="incluso-num">01</span>
+        <div class="incluso-titulo">Curso completo</div>
+        <div class="incluso-desc">Acesso ao programa SOB COMANDO na íntegra, com todas as aulas.</div>
+      </div>
+      <div class="incluso-card">
+        <span class="incluso-num">02</span>
+        <div class="incluso-titulo">Comunidade</div>
+        <div class="incluso-desc">Networking direto com outros profissionais em ascensão.</div>
+      </div>
+      <div class="incluso-card">
+        <span class="incluso-num">03</span>
+        <div class="incluso-titulo">Materiais de apoio</div>
+        <div class="incluso-desc">PDFs, scripts e checklists para acelerar a prática no dia a dia.</div>
+      </div>
+      <div class="incluso-card">
+        <span class="incluso-num">04</span>
+        <div class="incluso-titulo">Exercícios práticos</div>
+        <div class="incluso-desc">Treinamento aplicado para uso imediato, não só teoria.</div>
+      </div>
+      <div class="incluso-card">
+        <span class="incluso-num">05</span>
+        <div class="incluso-titulo">Atualizações futuras</div>
+        <div class="incluso-desc">Novas aulas e conteúdos incluídos sem custo adicional.</div>
+      </div>
+      <div class="incluso-card">
+        <span class="incluso-num">06</span>
+        <div class="incluso-titulo">Suporte dedicado</div>
+        <div class="incluso-desc">Ajuda direta sempre que precisar evoluir.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AULAS -->
+<section class="aulas-section">
+  <div class="container">
+    <span class="section-label">Aulas</span>
+    <h2 class="section-title">Tudo em um só lugar — 4 aulas + apresentação</h2>
+
+    <div class="aulas-list">
+      <div class="aula-item">
+        <div class="aula-num">Aula 00</div>
+        <div>
+          <div class="aula-titulo">Apresentação do Produto</div>
+          <div class="aula-desc">Boas-vindas ao curso, explicação de como acessar o suporte, materiais complementares e como tirar o máximo proveito da jornada.</div>
+        </div>
+      </div>
+      <div class="aula-item">
+        <div class="aula-num">Aula 01</div>
+        <div>
+          <div class="aula-titulo">O Peso da Liderança</div>
+          <div class="aula-desc">Entenda o que significa liderar e por que tantos jovens evitam essa responsabilidade.</div>
+        </div>
+      </div>
+      <div class="aula-item">
+        <div class="aula-num">Aula 02</div>
+        <div>
+          <div class="aula-titulo">Conversas Que Pessoas de Liderança Não Podem Evitar</div>
+          <div class="aula-desc">Aprenda a conduzir as conversas mais difíceis sem perder respeito ou autoridade.</div>
+        </div>
+      </div>
+      <div class="aula-item">
+        <div class="aula-num">Aula 03</div>
+        <div>
+          <div class="aula-titulo">Influência Sem Dependência</div>
+          <div class="aula-desc">Construa influência real, baseada em postura, não em validação externa.</div>
+        </div>
+      </div>
+      <div class="aula-item">
+        <div class="aula-num">Aula 04</div>
+        <div>
+          <div class="aula-titulo">O Termômetro dos Ambientes</div>
+          <div class="aula-desc">Leia salas, perceba sinais e responda com inteligência social.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOR -->
+<section class="autor-section">
+  <div class="container">
+    <span class="section-label">Criador do Método</span>
+    <div class="autor-inner">
+      <div class="autor-foto">Foto<br>Bruno Ribeiro</div>
+      <div>
+        <h2 class="autor-nome">Bruno Ribeiro</h2>
+        <span class="autor-cargo">Criador do Método SOB COMANDO</span>
+        <p class="autor-bio">Bruno Ribeiro descobriu cedo algo que muitas pessoas levam anos para perceber: <strong>talento sem comunicação raramente recebe o reconhecimento que merece.</strong></p>
+        <br>
+        <p class="autor-bio">Sua primeira promoção aconteceu antes dos 18 anos. Aos 19, conquistou uma nova promoção em menos de um ano de empresa. Ao longo de sua trajetória, desenvolveu habilidades de liderança, posicionamento e comunicação que passaram a acelerar seus resultados profissionais.</p>
+        <br>
+        <p class="autor-bio">Hoje, através do método <strong>SOB COMANDO</strong>, sua missão é ajudar jovens profissionais a desenvolverem presença, liderança e maturidade para conquistarem respeito através da postura — não da idade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJEÇÕES -->
+<section class="objec-section">
+  <div class="container">
+    <span class="section-label">Objeções</span>
+    <h2 class="section-title">Sei o que está passando pela sua cabeça</h2>
+
+    <div class="objec-list">
+      <div class="objec-item">
+        <div class="objec-icon">?</div>
+        <span class="objec-text">Sou tímido. Isso funciona para mim? — Sim. O método foi desenvolvido especialmente para pessoas que se consideram tímidas. A timidez não é um bloqueio, é um ponto de partida.</span>
+      </div>
+      <div class="objec-item">
+        <div class="objec-icon">?</div>
+        <span class="objec-text">Sou muito novo. Ninguém vai me respeitar. — Idade não determina respeito. Postura, sim. É exatamente isso que o método desenvolve.</span>
+      </div>
+      <div class="objec-item">
+        <div class="objec-icon">?</div>
+        <span class="objec-text">Não nasci com perfil de líder. — Liderança não é um dom, é uma habilidade. Habilidades se aprendem e se treinam.</span>
+      </div>
+      <div class="objec-item">
+        <div class="objec-icon">?</div>
+        <span class="objec-text">Tenho medo de assumir responsabilidade. — O método aborda isso diretamente. Você vai entender por que esse medo existe e como superá-lo na prática.</span>
+      </div>
+      <div class="objec-item">
+        <div class="objec-icon">?</div>
+        <span class="objec-text">Não sei me impor. — Essa é uma habilidade comunicacional. E como toda habilidade, é ensinável. Isso é exatamente o que você vai aprender aqui.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="garantia-section">
+  <div class="container">
+    <div class="garantia-inner">
+      <div class="garantia-selo">
+        <div class="garantia-dias">30</div>
+        <div class="garantia-label">dias de garantia</div>
+      </div>
+      <div>
+        <h2 class="section-title" style="margin-bottom: 0.75rem;">Garantia Incondicional de 30 Dias</h2>
+        <p class="garantia-desc">Teste o treinamento por 30 dias. Se perceber que ele não é para você, basta solicitar o reembolso dentro do prazo. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="oferta-section" id="oferta">
+  <div class="container" style="text-align: center;">
+    <span class="section-label">Oferta</span>
+    <h2 class="section-title">É hora de assumir o comando</h2>
+    <p style="color: #666; margin-top: 0.5rem;">Acesso completo ao método, comunidade e atualizações futuras.</p>
+
+    <div class="oferta-box">
+      <span class="oferta-nome">Método SOB COMANDO — Acesso completo</span>
+
+      <div class="oferta-parcel">12x de <span style="color: var(--branco); font-weight: 700;">R$ 16,49</span></div>
+      <div class="oferta-ou">ou</div>
+      <div class="oferta-avista"><strong>R$ 197,99</strong> à vista</div>
+
+      <a href="#" class="btn-oferta">Quero Assumir o Comando →</a>
+      <p class="oferta-access">Acesso imediato após a confirmação do pagamento.</p>
+
+      <ul class="oferta-itens">
+        <li><div class="oferta-check">✓</div> Curso completo SOB COMANDO</li>
+        <li><div class="oferta-check">✓</div> Comunidade exclusiva</li>
+        <li><div class="oferta-check">✓</div> Materiais de apoio e exercícios</li>
+        <li><div class="oferta-check">✓</div> Atualizações futuras incluídas</li>
+        <li><div class="oferta-check">✓</div> Garantia de 30 dias</li>
+        <li><div class="oferta-check">✓</div> Acesso vitalício</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <span class="section-label">Perguntas frequentes</span>
+    <h2 class="section-title">Tire suas últimas dúvidas</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Como recebo o acesso?</div>
+        <div class="faq-a">Após a confirmação do pagamento, você recebe um e-mail com os dados de acesso à plataforma. O acesso é imediato.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Por quanto tempo posso assistir?</div>
+        <div class="faq-a">O acesso é vitalício. Você pode assistir quantas vezes quiser, no seu ritmo, para sempre.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Funciona no celular?</div>
+        <div class="faq-a">Sim. A plataforma é 100% responsiva e funciona em qualquer dispositivo — celular, tablet ou computador.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quanto tempo preciso dedicar por semana?</div>
+        <div class="faq-a">O conteúdo foi desenvolvido para ser prático e direto. Você consegue absorver tudo com poucas horas semanais, no seu ritmo.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Preciso ter experiência em liderança?</div>
+        <div class="faq-a">Não. O método foi criado justamente para quem está começando a desenvolver essas habilidades.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Como funciona a garantia?</div>
+        <div class="faq-a">Você tem 30 dias para testar o treinamento. Se não ficar satisfeito por qualquer motivo, basta solicitar o reembolso por e-mail. Sem burocracia.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="closing-section">
+  <div class="container">
+    <h2 class="section-title">O respeito que você procura começa pela forma como você se posiciona.</h2>
+    <a href="#oferta" class="btn-primary">Assumir o Comando Agora</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SOB COMANDO</div>
+  <div class="footer-links">
+    <a href="#">Termos de uso</a>
+    <a href="#">Política de privacidade</a>
+  </div>
+  <p>© 2026 Método SOB COMANDO. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
